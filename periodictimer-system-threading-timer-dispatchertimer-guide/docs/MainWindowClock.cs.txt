@@ -1,0 +1,47 @@
+// 記事 4.3「WPF の UI 更新なら、DispatcherTimer」のコードです。
+//
+// DispatcherTimer（System.Windows.Threading）は WPF 固有で、Windows 上の
+// WPF プロジェクト（<UseWPF>true</UseWPF> / net8.0-windows）でのみビルドできます。
+// このサンプルリポジトリは Linux でもビルド・テストできるようにしているため、
+// このファイルはビルド対象に含めず、参照用としてここに置いています。
+//
+// XAML 側には x:Name="ClockText" の TextBlock がある想定です。
+//
+//   <TextBlock x:Name="ClockText" FontSize="32" />
+
+using System;
+using System.Windows;
+using System.Windows.Threading;
+
+public partial class MainWindow : Window
+{
+    private readonly DispatcherTimer _clockTimer;
+
+    public MainWindow()
+    {
+        InitializeComponent();
+
+        _clockTimer = new DispatcherTimer(DispatcherPriority.Background)
+        {
+            Interval = TimeSpan.FromSeconds(1)
+        };
+        _clockTimer.Tick += ClockTimer_Tick;
+        _clockTimer.Start();
+    }
+
+    private void ClockTimer_Tick(object? sender, EventArgs e)
+    {
+        // Tick は WPF の Dispatcher（UI スレッド）上で処理されるので、
+        // UI 要素をそのまま触れる。その代わり、ここに重い処理を書くと
+        // 入力・描画まで巻き込んで UI ごと遅くなる。
+        ClockText.Text = DateTime.Now.ToString("HH:mm:ss");
+    }
+
+    protected override void OnClosed(EventArgs e)
+    {
+        // 閉じるときは Stop() と購読解除で寿命を明示する（記事 5.4）
+        _clockTimer.Stop();
+        _clockTimer.Tick -= ClockTimer_Tick;
+        base.OnClosed(e);
+    }
+}
