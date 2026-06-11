@@ -1,0 +1,4 @@
+# スクリプト実行時の出力
+vbscript-dependency-hits.csv
+task-vbscript-dependencies.csv
+out.csv
