@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- C++/CLI ラッパー（AnalyzerWrapper.dll）を参照するため、ビルド・実行とも Windows 専用です。
+       先に src/wrapper/AnalyzerWrapper.vcxproj をビルドしてください。 -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PlatformTarget>x64</PlatformTarget>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <!-- C++/CLI の x64 DLL を参照するための設定。アーキテクチャ不一致警告を抑止します。 -->
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="AnalyzerWrapper">
+      <HintPath>..\..\wrapper\bin\x64\$(Configuration)\AnalyzerWrapper.dll</HintPath>
+    </Reference>
+    <!-- C++/CLI (.NET) アセンブリのロードに必要な Ijwhost.dll を出力先へコピーします。 -->
+    <None Include="..\..\wrapper\bin\x64\$(Configuration)\Ijwhost.dll"
+          Condition="Exists('..\..\wrapper\bin\x64\$(Configuration)\Ijwhost.dll')"
+          CopyToOutputDirectory="PreserveNewest"
+          Link="Ijwhost.dll" />
+  </ItemGroup>
+
+</Project>

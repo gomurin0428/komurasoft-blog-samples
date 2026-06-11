@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NativeLib", "src\native\NativeLib.vcxproj", "{7006B72C-9E68-46E3-911C-FBD767127DE4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NativeBridge", "src\native\NativeBridge.vcxproj", "{81B3BBDA-E322-4130-A736-1AE24A44DF9D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AnalyzerWrapper", "src\wrapper\AnalyzerWrapper.vcxproj", "{74938813-B518-48D2-B7FA-32708DC66C27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WrapperConsumer", "src\consumer\WrapperConsumer\WrapperConsumer.csproj", "{B0FD465B-EF4A-4EBF-801F-C31AD9523FF8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PInvokeConsumer", "src\consumer\PInvokeConsumer\PInvokeConsumer.csproj", "{95A2C691-A3E7-4804-8A89-29B13E803C83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7006B72C-9E68-46E3-911C-FBD767127DE4}.Debug|x64.ActiveCfg = Debug|x64
+		{7006B72C-9E68-46E3-911C-FBD767127DE4}.Debug|x64.Build.0 = Debug|x64
+		{7006B72C-9E68-46E3-911C-FBD767127DE4}.Release|x64.ActiveCfg = Release|x64
+		{7006B72C-9E68-46E3-911C-FBD767127DE4}.Release|x64.Build.0 = Release|x64
+		{81B3BBDA-E322-4130-A736-1AE24A44DF9D}.Debug|x64.ActiveCfg = Debug|x64
+		{81B3BBDA-E322-4130-A736-1AE24A44DF9D}.Debug|x64.Build.0 = Debug|x64
+		{81B3BBDA-E322-4130-A736-1AE24A44DF9D}.Release|x64.ActiveCfg = Release|x64
+		{81B3BBDA-E322-4130-A736-1AE24A44DF9D}.Release|x64.Build.0 = Release|x64
+		{74938813-B518-48D2-B7FA-32708DC66C27}.Debug|x64.ActiveCfg = Debug|x64
+		{74938813-B518-48D2-B7FA-32708DC66C27}.Debug|x64.Build.0 = Debug|x64
+		{74938813-B518-48D2-B7FA-32708DC66C27}.Release|x64.ActiveCfg = Release|x64
+		{74938813-B518-48D2-B7FA-32708DC66C27}.Release|x64.Build.0 = Release|x64
+		{B0FD465B-EF4A-4EBF-801F-C31AD9523FF8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B0FD465B-EF4A-4EBF-801F-C31AD9523FF8}.Debug|x64.Build.0 = Debug|Any CPU
+		{B0FD465B-EF4A-4EBF-801F-C31AD9523FF8}.Release|x64.ActiveCfg = Release|Any CPU
+		{B0FD465B-EF4A-4EBF-801F-C31AD9523FF8}.Release|x64.Build.0 = Release|Any CPU
+		{95A2C691-A3E7-4804-8A89-29B13E803C83}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{95A2C691-A3E7-4804-8A89-29B13E803C83}.Debug|x64.Build.0 = Debug|Any CPU
+		{95A2C691-A3E7-4804-8A89-29B13E803C83}.Release|x64.ActiveCfg = Release|Any CPU
+		{95A2C691-A3E7-4804-8A89-29B13E803C83}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDAF3107-D0BF-40E4-A75F-20778FA4A542}
+	EndGlobalSection
+EndGlobal
