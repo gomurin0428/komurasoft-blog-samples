@@ -1,0 +1,3 @@
+# tools/Invoke-ProjectTests.ps1 の出力
+test-results.xml
+coverage.xml
