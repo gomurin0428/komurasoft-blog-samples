@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>MyApp</RootNamespace>
+    <!-- UI 側は asInvoker のマニフェストを埋め込む（記事 8.1 章） -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <!-- Linux 上でも net8.0-windows のビルド検証ができるようにする -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\KomuraSoft.AdminBroker\KomuraSoft.AdminBroker.csproj" />
+  </ItemGroup>
+
+</Project>
