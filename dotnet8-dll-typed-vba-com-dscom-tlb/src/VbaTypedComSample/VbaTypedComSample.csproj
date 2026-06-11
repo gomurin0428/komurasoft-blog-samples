@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableComHosting>true</EnableComHosting>
+    <PlatformTarget>x64</PlatformTarget>
+    <NETCoreSdkRuntimeIdentifier>win-x64</NETCoreSdkRuntimeIdentifier>
+    <!-- Linux 上でも net8.0-windows のビルド検証ができるようにする（記事 4.1 の csproj への追加分） -->
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+</Project>
