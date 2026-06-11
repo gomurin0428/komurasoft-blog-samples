@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{47BA0245-EDC5-4C5B-A866-636296FEA059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KomuraSoft.AdminBroker", "src\KomuraSoft.AdminBroker\KomuraSoft.AdminBroker.csproj", "{887C6A52-D467-4D7C-A4DA-3B7E5EB73903}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{895D8186-F66C-458F-B072-5E59B12D09E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp", "samples\MyApp\MyApp.csproj", "{C8A64B35-59DA-4044-9976-38ED084E393E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp.AdminBroker", "samples\MyApp.AdminBroker\MyApp.AdminBroker.csproj", "{AC334BEA-0143-402A-94BA-84B8D7D27064}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9DA97DC9-FE6F-45E1-BFCD-D23BD5CAFF6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KomuraSoft.AdminBroker.Tests", "tests\KomuraSoft.AdminBroker.Tests\KomuraSoft.AdminBroker.Tests.csproj", "{D1588D54-4BF0-4DD0-B208-5F2F7BF6198B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{887C6A52-D467-4D7C-A4DA-3B7E5EB73903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887C6A52-D467-4D7C-A4DA-3B7E5EB73903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887C6A52-D467-4D7C-A4DA-3B7E5EB73903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887C6A52-D467-4D7C-A4DA-3B7E5EB73903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8A64B35-59DA-4044-9976-38ED084E393E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8A64B35-59DA-4044-9976-38ED084E393E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8A64B35-59DA-4044-9976-38ED084E393E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8A64B35-59DA-4044-9976-38ED084E393E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC334BEA-0143-402A-94BA-84B8D7D27064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC334BEA-0143-402A-94BA-84B8D7D27064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC334BEA-0143-402A-94BA-84B8D7D27064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC334BEA-0143-402A-94BA-84B8D7D27064}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1588D54-4BF0-4DD0-B208-5F2F7BF6198B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1588D54-4BF0-4DD0-B208-5F2F7BF6198B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1588D54-4BF0-4DD0-B208-5F2F7BF6198B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1588D54-4BF0-4DD0-B208-5F2F7BF6198B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{887C6A52-D467-4D7C-A4DA-3B7E5EB73903} = {47BA0245-EDC5-4C5B-A866-636296FEA059}
+		{C8A64B35-59DA-4044-9976-38ED084E393E} = {895D8186-F66C-458F-B072-5E59B12D09E7}
+		{AC334BEA-0143-402A-94BA-84B8D7D27064} = {895D8186-F66C-458F-B072-5E59B12D09E7}
+		{D1588D54-4BF0-4DD0-B208-5F2F7BF6198B} = {9DA97DC9-FE6F-45E1-BFCD-D23BD5CAFF6A}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+{
+  "LogPath": "C:\\App\\Logs",
+  "OutputPath": "C:\\App\\Reports",
+  "Days": 7,
+  "Patterns": [
+    "ERROR",
+    "WARN",
+    "FATAL"
+  ],
+  "ArchiveDays": 90,
+  "ArchivePath": "C:\\App\\Archive"
+}
