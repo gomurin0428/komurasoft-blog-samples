@@ -1,6 +1,6 @@
 # Ada言語の魅力 ── サンプルコード
 
-ブログ記事「[Ada言語の魅力 ── 型で設計を語り、数十年動き続けるソフトウェアを支える言語](https://comcomponent.com/blog/2026/06/12/000-ada-language-appeal/)」のサンプルコードです。
+ブログ記事「[Ada言語の魅力 ── 型で設計を語り、数十年動き続けるソフトウェアを支える言語](https://comcomponent.com/blog/ada-language-appeal/)」のサンプルコードです。
 
 Ada は、航空機のフライトコントロールや鉄道の信号システムなど、高信頼性が求められる分野で 40 年以上使われ続けている言語です。記事では、強い型付け、範囲制約、パッケージによる仕様と実装の分離、契約による設計(Pre/Post)、言語組み込みのタスクと保護オブジェクト、SPARK による形式検証、GNAT と Alire での開発環境を整理しています。
 
@@ -61,4 +61,4 @@ gnatmake -gnata contracts_demo
 - Ada 2012 の契約(`Pre` / `Post`)は実行時チェックにも、SPARK による静的証明の入力にもなる
 - タスクと保護オブジェクトにより、並行処理と排他制御を言語機能として安全に書ける
 
-詳しい解説は[記事本文](https://comcomponent.com/blog/2026/06/12/000-ada-language-appeal/)をご覧ください。
+詳しい解説は[記事本文](https://comcomponent.com/blog/ada-language-appeal/)をご覧ください。
