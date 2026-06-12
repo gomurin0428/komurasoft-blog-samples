@@ -47,6 +47,12 @@
 | [cpp-cli-wrapper-for-native-dlls](./cpp-cli-wrapper-for-native-dlls/) | [C#からネイティブDLLを呼ぶ：C++/CLIラッパー vs P/Invoke](https://comcomponent.com/blog/2026/03/07/000-cpp-cli-wrapper-for-native-dlls/) |
 | [windows-mfc-overview](./windows-mfc-overview/) | [WindowsのMFCとは何か](https://comcomponent.com/blog/2026/06/11/000-windows-mfc-overview/) |
 
+### Ada
+
+| フォルダ | 記事 |
+| --- | --- |
+| [ada-language-appeal](./ada-language-appeal/) | [Ada言語の魅力](https://comcomponent.com/blog/ada-language-appeal/) |
+
 ## ライセンス
 
 [MIT License](./LICENSE)
