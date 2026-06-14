@@ -32,7 +32,10 @@ package body Ravenscar_Pkg is
          Next_Release := Next_Release + Period;
       end loop;
 
-      Put_Line ("[Worker] Finished");
+      Put_Line ("[Worker] Finished demo, waiting (Ravenscar: No_Task_Termination)");
+      loop
+         delay until Clock + Seconds (1);
+      end loop;
    end Periodic_Worker;
 
    task body Monitor is
@@ -44,6 +47,9 @@ package body Ravenscar_Pkg is
          Put_Line ("[Monitor] Received signal" & Natural'Image (I));
       end loop;
 
-      Put_Line ("[Monitor] All signals received");
+      Put_Line ("[Monitor] All signals received, waiting (Ravenscar: No_Task_Termination)");
+      loop
+         delay until Clock + Seconds (1);
+      end loop;
    end Monitor;
 end Ravenscar_Pkg;

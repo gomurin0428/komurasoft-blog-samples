@@ -4,6 +4,8 @@
 -- 遅い周期(400ms)の制御タスク
 -- Ceiling_Locking によるデータ共有
 
+pragma Locking_Policy (Ceiling_Locking);
+
 with Ada.Text_IO;               use Ada.Text_IO;
 with System;                    use System;
 with Ada.Real_Time;             use Ada.Real_Time;

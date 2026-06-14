@@ -29,6 +29,7 @@ procedure Execution_Time_Demo is
       for I in 1 .. 20_000_000 loop
          Dummy := Dummy + 1;
       end loop;
+      Put_Line ("[Worker] Dummy =" & Integer'Image (Dummy));
 
       declare
          Wall_Elapsed : constant Duration :=
