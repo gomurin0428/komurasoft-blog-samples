@@ -3,3 +3,8 @@ bin/
 obj/
 *.user
 .vs/
+
+# Ada (GNAT) build artifacts
+*.o
+*.ali
+*.exe
