@@ -61,6 +61,9 @@ package body Ravenscar_State is
       end loop;
 
       Put_Line ("[Worker] Finished");
+      loop
+         delay until Ada.Real_Time.Time_Last;
+      end loop;
    end Periodic_Worker;
 
    task body Monitor is
@@ -73,6 +76,9 @@ package body Ravenscar_State is
       end loop;
 
       Put_Line ("[Monitor] All signals received");
+      loop
+         delay until Ada.Real_Time.Time_Last;
+      end loop;
    end Monitor;
 
 end Ravenscar_State;
