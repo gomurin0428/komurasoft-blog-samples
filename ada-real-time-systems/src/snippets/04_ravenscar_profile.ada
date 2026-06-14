@@ -6,34 +6,41 @@ with Ada.Text_IO;               use Ada.Text_IO;
 with System;                    use System;
 with Ada.Real_Time;             use Ada.Real_Time;
 
-procedure Ravenscar_Demo is
+package Ravenscar_State is
 
    protected Signal is
       pragma Priority (System.Default_Priority + 5);
       entry Wait_For_Release;
       procedure Release;
    private
-      Released : Boolean := False;
-   end Signal;
-
-   protected body Signal is
-      entry Wait_For_Release when Released is
-      begin
-         Released := False;
-         Put_Line ("  [Signal] Wait_For_Release accepted");
-      end Wait_For_Release;
-
-      procedure Release is
-      begin
-         Released := True;
-         Put_Line ("  [Signal] Released");
-      end Release;
+      Pending : Natural := 0;
    end Signal;
 
    task Periodic_Worker is
       pragma Priority (System.Default_Priority + 1);
       pragma Storage_Size (4 * 1024);
    end Periodic_Worker;
+
+   task Monitor is
+      pragma Priority (System.Default_Priority);
+      pragma Storage_Size (4 * 1024);
+   end Monitor;
+
+end Ravenscar_State;
+
+package body Ravenscar_State is
+
+   protected body Signal is
+      entry Wait_For_Release when Pending > 0 is
+      begin
+         Pending := Pending - 1;
+      end Wait_For_Release;
+
+      procedure Release is
+      begin
+         Pending := Pending + 1;
+      end Release;
+   end Signal;
 
    task body Periodic_Worker is
       Start_Time   : constant Time := Clock;
@@ -56,11 +63,6 @@ procedure Ravenscar_Demo is
       Put_Line ("[Worker] Finished");
    end Periodic_Worker;
 
-   task Monitor is
-      pragma Priority (System.Default_Priority);
-      pragma Storage_Size (4 * 1024);
-   end Monitor;
-
    task body Monitor is
    begin
       Put_Line ("[Monitor] Waiting for signals...");
@@ -73,6 +75,13 @@ procedure Ravenscar_Demo is
       Put_Line ("[Monitor] All signals received");
    end Monitor;
 
+end Ravenscar_State;
+
+with Ravenscar_State; use Ravenscar_State;
+with Ada.Text_IO;     use Ada.Text_IO;
+with Ada.Real_Time;   use Ada.Real_Time;
+
+procedure Ravenscar_Demo is
 begin
    Put_Line ("=== Ravenscar Profile Demo ===");
    Put_Line ("(compile with: gnatmake -gnatec=gnat.adc ravenscar_demo)");

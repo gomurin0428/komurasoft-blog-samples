@@ -3,31 +3,37 @@
 -- 高優先度タスクをポーリングなしで起床させる仕組み
 
 with Ada.Text_IO;               use Ada.Text_IO;
+with System;                    use System;
+with Ada.Real_Time;             use Ada.Real_Time;
 with Ada.Real_Time.Timing_Events; use Ada.Real_Time.Timing_Events;
 
 package Signal_Pkg is
    protected type Signal_Type is
+      pragma Priority (System.Interrupt_Priority'Last);
       entry Wait_For_Event;
       procedure Fire (Event : in out Timing_Event);
    private
-      Fired : Boolean := False;
+      Pending : Natural := 0;
    end Signal_Type;
 
    S : Signal_Type;
 end Signal_Pkg;
 
+with Ada.Text_IO;               use Ada.Text_IO;
+with System;                    use System;
+with Ada.Real_Time;             use Ada.Real_Time;
+with Ada.Real_Time.Timing_Events; use Ada.Real_Time.Timing_Events;
+
 package body Signal_Pkg is
    protected body Signal_Type is
-      entry Wait_For_Event when Fired is
+      entry Wait_For_Event when Pending > 0 is
       begin
-         Fired := False;
-         Put_Line ("  [Signal] Event handler woke up");
+         Pending := Pending - 1;
       end Wait_For_Event;
 
       procedure Fire (Event : in out Timing_Event) is
       begin
-         Fired := True;
-         Put_Line ("  [Signal] Timing event fired");
+         Pending := Pending + 1;
       end Fire;
    end Signal_Type;
 end Signal_Pkg;

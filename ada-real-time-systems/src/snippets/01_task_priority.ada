@@ -5,6 +5,8 @@ with Ada.Text_IO;               use Ada.Text_IO;
 with System;                    use System;
 with Ada.Real_Time;             use Ada.Real_Time;
 
+pragma Task_Dispatching_Policy (FIFO_Within_Priorities);
+
 procedure Task_Priority_Demo is
 
    task High_Priority_Task is

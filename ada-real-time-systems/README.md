@@ -32,7 +32,7 @@ GNAT (GCC の Ada コンパイラ) が必要です。Linux では `apt install g
 スニペットを 1 つずつ試す手順です。
 
 ```sh
-mkdir work && cd work
+mkdir -p work && cd work
 gnatchop ../src/snippets/01_task_priority.ada
 gnatmake task_priority_demo
 ./task_priority_demo
@@ -41,12 +41,12 @@ gnatmake task_priority_demo
 全スニペットをまとめてコンパイル・実行する場合:
 
 ```sh
-mkdir work && cd work
+mkdir -p work && cd work
 for f in ../src/snippets/*.ada; do
     echo "=== $(basename $f) ==="
     gnatchop "$f"
 done
-gnatmake -gnata *.adb
+gnatmake -gnata task_priority_demo ceiling_locking_demo periodic_task_demo ravenscar_demo timing_events_demo protected_queue_demo execution_time_demo multiperiodic_demo
 for exe in task_priority_demo ceiling_locking_demo periodic_task_demo \
            ravenscar_demo timing_events_demo protected_queue_demo \
            execution_time_demo multiperiodic_demo; do
