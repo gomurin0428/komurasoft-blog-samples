@@ -3,7 +3,7 @@ with System;                      use System;
 
 package Signal_Pkg is
    protected type Signal_Type is
-      pragma Priority (System.Default_Priority + 10);
+      pragma Priority (System.Interrupt_Priority'Last);
       entry Wait_For_Event;
       procedure Fire (Event : in out Timing_Event);
    private

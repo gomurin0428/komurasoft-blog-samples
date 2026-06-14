@@ -8,3 +8,6 @@ obj/
 *.o
 *.ali
 *.exe
+
+# Ada real-time systems: gnatchop work directory
+ada-real-time-systems/work/
