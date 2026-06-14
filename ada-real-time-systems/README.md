@@ -33,7 +33,7 @@ GNAT (GCC の Ada コンパイラ) が必要です。Linux では `apt install g
 
 ```sh
 mkdir -p work && cd work
-gnatchop ../src/snippets/01_task_priority.ada
+gnatchop -w ../src/snippets/01_task_priority.ada
 gnatmake task_priority_demo
 ./task_priority_demo
 ```
@@ -44,7 +44,7 @@ gnatmake task_priority_demo
 mkdir -p work && cd work
 for f in ../src/snippets/*.ada; do
     echo "=== $(basename $f) ==="
-    gnatchop "$f"
+    gnatchop -w "$f"
 done
 gnatmake -gnata task_priority_demo ceiling_locking_demo periodic_task_demo ravenscar_demo timing_events_demo protected_queue_demo execution_time_demo multiperiodic_demo
 for exe in task_priority_demo ceiling_locking_demo periodic_task_demo \
