@@ -23,12 +23,10 @@ procedure Ceiling_Locking_Demo is
       procedure Write (V : Integer) is
       begin
          Value := V;
-         Put_Line ("  [Protected] Written: " & Integer'Image (V));
       end Write;
 
       function Read return Integer is
       begin
-         Put_Line ("  [Protected] Read: " & Integer'Image (Value));
          return Value;
       end Read;
    end Shared_Data;
