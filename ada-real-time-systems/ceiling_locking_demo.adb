@@ -9,10 +9,10 @@ with Ada.Real_Time;             use Ada.Real_Time;
 
 procedure Ceiling_Locking_Demo is
 
-   Ceiling : constant System.Any_Priority := System.Any_Priority'Last;
+   Max_Prio : constant System.Any_Priority := System.Any_Priority'Last;
 
    protected Shared_Data is
-      pragma Priority (Ceiling);
+      pragma Priority (Max_Prio);
       procedure Write (V : Integer);
       function Read return Integer;
    private
@@ -23,16 +23,18 @@ procedure Ceiling_Locking_Demo is
       procedure Write (V : Integer) is
       begin
          Value := V;
+         Put_Line ("  [Protected] Written: " & Integer'Image (V));
       end Write;
 
       function Read return Integer is
       begin
+         Put_Line ("  [Protected] Read: " & Integer'Image (Value));
          return Value;
       end Read;
    end Shared_Data;
 
    task Producer is
-      pragma Priority (Priority'Last);
+      pragma Priority (Max_Prio - 1);
       pragma Storage_Size (4 * 1024);
    end Producer;
 
@@ -65,8 +67,8 @@ procedure Ceiling_Locking_Demo is
 
 begin
    Put_Line ("=== Ceiling_Locking Demo ===");
-   Put_Line ("Main: producer priority = Last, consumer priority = First");
-   Put_Line ("Ceiling = Any_Priority'Last, locking = Ceiling_Locking");
+   Put_Line ("Main: producer priority = Max-1, consumer priority = First");
+   Put_Line ("Ceiling = Max, so neither can block the other inside PO");
    delay until Clock + Milliseconds (300);
    Put_Line ("Main: done");
 end Ceiling_Locking_Demo;
