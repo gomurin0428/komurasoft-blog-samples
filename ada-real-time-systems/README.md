@@ -60,16 +60,10 @@ done
 
 ### Ravenscar プロファイルを有効にして試す
 
-`04_ravenscar_profile.ada` を Ravenscar プロファイル下で動作させるには、`gnat.adc` ファイルを作成します:
+`04_ravenscar_profile.ada` を Ravenscar プロファイル下で動作させるには、付属の `ravenscar.adc` を使います。`ravenscar_demo.adb` は `ravenscar_pkg.ads/adb` (パッケージ仕様・本体) を依存先として持ちます。
 
 ```sh
-echo 'pragma Profile (Ravenscar);' > gnat.adc
-```
-
-その上で `gnatmake` に `-gnatec=gnat.adc` を渡します:
-
-```sh
-gnatmake -gnatec=gnat.adc ravenscar_demo
+gnatmake -gnat2022 -gnatec=ravenscar.adc ravenscar_demo
 ./ravenscar_demo
 ```
 

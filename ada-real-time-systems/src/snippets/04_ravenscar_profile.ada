@@ -1,6 +1,6 @@
 -- 04_ravenscar_profile.ada
 -- Ravenscar プロファイルの基本形
--- コンパイル時に gnat.adc で pragma Profile (Ravenscar); を指定する
+-- コンパイル時に ravenscar.adc で pragma Profile (Ravenscar); を指定する
 
 with Ada.Text_IO;               use Ada.Text_IO;
 with System;                    use System;
@@ -13,7 +13,7 @@ package Ravenscar_State is
       entry Wait_For_Release;
       procedure Release;
    private
-      Pending : Natural := 0;
+      Released : Boolean := False;
    end Signal;
 
    task Periodic_Worker is
@@ -31,14 +31,14 @@ end Ravenscar_State;
 package body Ravenscar_State is
 
    protected body Signal is
-      entry Wait_For_Release when Pending > 0 is
+      entry Wait_For_Release when Released is
       begin
-         Pending := Pending - 1;
+         Released := False;
       end Wait_For_Release;
 
       procedure Release is
       begin
-         Pending := Pending + 1;
+         Released := True;
       end Release;
    end Signal;
 
@@ -84,7 +84,7 @@ with Ada.Real_Time;   use Ada.Real_Time;
 procedure Ravenscar_Demo is
 begin
    Put_Line ("=== Ravenscar Profile Demo ===");
-   Put_Line ("(compile with: gnatmake -gnatec=gnat.adc ravenscar_demo)");
+   Put_Line ("(compile with: gnatmake -gnatec=ravenscar.adc ravenscar_demo)");
    Put_Line ("Main: waiting for Ravenscar tasks...");
    delay until Clock + Milliseconds (800);
    Put_Line ("Main: done");

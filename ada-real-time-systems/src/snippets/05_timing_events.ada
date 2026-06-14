@@ -13,7 +13,7 @@ package Signal_Pkg is
       entry Wait_For_Event;
       procedure Fire (Event : in out Timing_Event);
    private
-      Pending : Natural := 0;
+      Fired : Boolean := False;
    end Signal_Type;
 
    S : Signal_Type;
@@ -26,14 +26,14 @@ with Ada.Real_Time.Timing_Events; use Ada.Real_Time.Timing_Events;
 
 package body Signal_Pkg is
    protected body Signal_Type is
-      entry Wait_For_Event when Pending > 0 is
+      entry Wait_For_Event when Fired is
       begin
-         Pending := Pending - 1;
+         Fired := False;
       end Wait_For_Event;
 
       procedure Fire (Event : in out Timing_Event) is
       begin
-         Pending := Pending + 1;
+         Fired := True;
       end Fire;
    end Signal_Type;
 end Signal_Pkg;
