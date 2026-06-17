@@ -13,6 +13,10 @@ procedure Generic_Insertion_Sort (Items : in out Item_Array) is
    Temp : Item_Type;
    J    : Index;
 begin
+   if Items'Length < 2 then
+      return;
+   end if;
+
    for I in Index'Succ (Items'First) .. Items'Last loop
       Temp := Items (I);
       J    := I;
