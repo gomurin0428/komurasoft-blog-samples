@@ -51,7 +51,12 @@
 
 | フォルダ | 記事 |
 | --- | --- |
-| [ada-language-appeal](./ada-language-appeal/) | [Ada言語の魅力](https://comcomponent.com/blog/ada-language-appeal/) |
+| [ada-language-appeal](./ada-language-appeal/) | [Ada言語の魅力 ── 型で設計を語り、数十年動き続けるソフトウェアを支える言語](https://comcomponent.com/blog/ada-language-appeal/) |
+| [ada-spark-formal-verification](./ada-spark-formal-verification/) | [SPARKによる形式検証入門 ── Adaの契約型プログラミングでバグを「証明」する](https://comcomponent.com/blog/ada-spark-formal-verification/) |
+| [ada-task-concurrency](./ada-task-concurrency/) | [Adaにおける安全な並行処理 ── タスクと保護オブジェクトの実践ガイド](https://comcomponent.com/blog/ada-task-concurrency/) |
+| [ada-real-time-systems](./ada-real-time-systems/) | [Adaによるリアルタイムシステムプログラミング ── 締切を守る言語機能](https://comcomponent.com/blog/ada-real-time-systems/) |
+| [ada-2022-new-features](./ada-2022-new-features/) | [Ada 2022の新機能 ── パラレルブロック・デルタ集成・宣言式・大整数](https://comcomponent.com/blog/ada-2022-new-features/) |
+| [ada-generic-programming](./ada-generic-programming/) | [Adaのジェネリックプログラミング ── 型安全な再利用をゼロコストで実現する仕組み](https://comcomponent.com/blog/ada-generic-programming/) |
 
 ## ライセンス
 
