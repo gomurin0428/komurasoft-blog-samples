@@ -6,7 +6,7 @@ generic
    type Element is private;
    type Index is (<>);
    type Array_Type is array (Index range <>) of Element;
-   with function Predicate (Item : Element) return Boolean is <>;
+   with function Predicate (Item : Element) return Boolean;
 function Generic_Count_If (Arr : Array_Type) return Natural;
 
 function Generic_Count_If (Arr : Array_Type) return Natural is
