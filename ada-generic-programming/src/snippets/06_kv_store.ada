@@ -12,7 +12,8 @@ package Generic_KV_Store is
    procedure Put (Key : Key_Type; Val : Value_Type);
    function Get (Key : Key_Type) return Value_Type;
    function Contains (Key : Key_Type) return Boolean;
-   Key_Not_Found : exception;
+    Key_Not_Found : exception;
+    Store_Full    : exception;
 end Generic_KV_Store;
 
 package body Generic_KV_Store is
@@ -33,6 +34,7 @@ package body Generic_KV_Store is
             return;
          end if;
       end loop;
+      raise Store_Full;
    end Put;
 
    function Get (Key : Key_Type) return Value_Type is

@@ -41,7 +41,7 @@ mkdir work && cd work
 for f in ../src/snippets/*.ada; do
     gnatchop "$f"
 done
-gnatmake -gnata *.adb
+gnatmake -gnata swap_demo stack_demo sort_demo statistics_demo filter_demo kv_store_demo
 for exe in swap_demo stack_demo sort_demo statistics_demo filter_demo kv_store_demo; do
     echo "=== $exe ==="
     ./$exe

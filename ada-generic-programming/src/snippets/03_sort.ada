@@ -11,16 +11,16 @@ procedure Generic_Insertion_Sort (Items : in out Item_Array);
 
 procedure Generic_Insertion_Sort (Items : in out Item_Array) is
    Temp : Item_Type;
-   J    : Index'Base;
+   J    : Index;
 begin
    for I in Index'Succ (Items'First) .. Items'Last loop
       Temp := Items (I);
-      J    := Index'Pred (I);
-      while J >= Items'First and then Temp < Items (J) loop
-         Items (Index'Succ (J)) := Items (J);
+      J    := I;
+      while J > Items'First and then Temp < Items (Index'Pred (J)) loop
+         Items (J) := Items (Index'Pred (J));
          J := Index'Pred (J);
       end loop;
-      Items (Index'Succ (J)) := Temp;
+      Items (J) := Temp;
    end loop;
 end Generic_Insertion_Sort;
 
