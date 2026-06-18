@@ -51,7 +51,10 @@
 
 | フォルダ | 記事 |
 | --- | --- |
-| [ada-language-appeal](./ada-language-appeal/) | [Ada言語の魅力](https://comcomponent.com/blog/ada-language-appeal/) |
+| [ada-language-appeal](./ada-language-appeal/) | [Ada言語の魅力 ── 型で設計を語り、数十年動き続けるソフトウェアを支える言語](https://comcomponent.com/blog/ada-language-appeal/) |
+| [ada-task-concurrency](./ada-task-concurrency/) | [Adaにおける安全な並行処理 ── タスクと保護オブジェクトの実践ガイド](https://comcomponent.com/blog/ada-task-concurrency/) |
+| [ada-real-time-systems](./ada-real-time-systems/) | [Adaによるリアルタイムシステムプログラミング ── 締切を守る言語機能](https://comcomponent.com/blog/ada-real-time-systems/) |
+| [ada-generic-programming](./ada-generic-programming/) | [Adaのジェネリックプログラミング ── 型安全な再利用をゼロコストで実現する仕組み](https://comcomponent.com/blog/ada-generic-programming/) |
 
 ## ライセンス
 
