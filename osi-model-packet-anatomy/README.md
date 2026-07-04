@@ -1,6 +1,6 @@
 # OSI参照モデルをパケット1個の解剖で理解する ── サンプルコード
 
-ブログ記事「[OSI参照モデルをはっきりイメージする ── HTTPリクエスト1個を7層に解剖する](https://comcomponent.com/blog/2026/07/04/005-osi-model-packet-anatomy/)」のサンプルコードです。
+ブログ記事「[OSI参照モデルをはっきりイメージする ── HTTPリクエスト1個を7層に解剖する](https://comcomponent.com/blog/osi-model-packet-anatomy/)」のサンプルコードです。
 
 OSI参照モデルの7層は概念図の中だけの話ではなく、ネットワークを流れるフレーム1個のバイト列の中に **物理的に入れ子** になって存在します。このサンプルは、HTTP GET リクエスト1個を運ぶ Ethernet フレームを C# で組み立て(L7→L2)、外側から順に解剖して(L2→L7)、各層のヘッダーがフレームの何バイト目から何バイト目までを占めるかを表示します。
 
@@ -58,4 +58,4 @@ dotnet test
 - TCP チェックサムは L3 のアドレス情報を含む「擬似ヘッダー」込みで計算する ── 層がきれいに独立していない現実の一例
 - HTTP かどうかはペイロードの中身で判断するしかない(ポート番号は慣習にすぎない)
 
-詳しい解説は[記事本文](https://comcomponent.com/blog/2026/07/04/005-osi-model-packet-anatomy/)をご覧ください。
+詳しい解説は[記事本文](https://comcomponent.com/blog/osi-model-packet-anatomy/)をご覧ください。
