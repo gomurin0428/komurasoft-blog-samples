@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D431AB9D-1579-4B2C-B8AD-5B3BEA0B5260}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KomuraSoft.OsiPacketAnatomy", "src\KomuraSoft.OsiPacketAnatomy\KomuraSoft.OsiPacketAnatomy.csproj", "{055AA03E-9F6D-4232-8BF4-A5FD1D3D5B0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{4A64F6D2-C53F-46B2-801D-7F50F9F79C21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "samples\Demo\Demo.csproj", "{EA706B60-D577-4665-AD78-2996A0653233}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CB4EA68C-42EA-429E-8C42-8F502228248A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KomuraSoft.OsiPacketAnatomy.Tests", "tests\KomuraSoft.OsiPacketAnatomy.Tests\KomuraSoft.OsiPacketAnatomy.Tests.csproj", "{EDD35238-C3F5-4947-894E-697A8D4E1508}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{055AA03E-9F6D-4232-8BF4-A5FD1D3D5B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055AA03E-9F6D-4232-8BF4-A5FD1D3D5B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055AA03E-9F6D-4232-8BF4-A5FD1D3D5B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055AA03E-9F6D-4232-8BF4-A5FD1D3D5B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA706B60-D577-4665-AD78-2996A0653233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA706B60-D577-4665-AD78-2996A0653233}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA706B60-D577-4665-AD78-2996A0653233}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA706B60-D577-4665-AD78-2996A0653233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD35238-C3F5-4947-894E-697A8D4E1508}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD35238-C3F5-4947-894E-697A8D4E1508}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD35238-C3F5-4947-894E-697A8D4E1508}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD35238-C3F5-4947-894E-697A8D4E1508}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{055AA03E-9F6D-4232-8BF4-A5FD1D3D5B0F} = {D431AB9D-1579-4B2C-B8AD-5B3BEA0B5260}
+		{EA706B60-D577-4665-AD78-2996A0653233} = {4A64F6D2-C53F-46B2-801D-7F50F9F79C21}
+		{EDD35238-C3F5-4947-894E-697A8D4E1508} = {CB4EA68C-42EA-429E-8C42-8F502228248A}
+	EndGlobalSection
+EndGlobal
