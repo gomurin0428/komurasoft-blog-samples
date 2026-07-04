@@ -11,6 +11,7 @@
 | フォルダ | 記事 |
 | --- | --- |
 | [tcp-send-receive-message-framing](./tcp-send-receive-message-framing/) | [TCPでSendした単位ごとにReceiveできるという誤解](https://comcomponent.com/blog/2026/06/09/001-tcp-send-receive-message-framing/) |
+| [osi-model-packet-anatomy](./osi-model-packet-anatomy/) | [OSI参照モデルをはっきりイメージする ── HTTPリクエスト1個を7層に解剖する](https://comcomponent.com/blog/osi-model-packet-anatomy/) |
 | [csharp-async-await-best-practices](./csharp-async-await-best-practices/) | [C# async/await実務判断表](https://comcomponent.com/blog/2026/03/09/001-csharp-async-await-best-practices/) |
 | [csharp-run-powershell-receive-objects](./csharp-run-powershell-receive-objects/) | [C#でPowerShellを実行して、オブジェクトとして受け取る方法](https://comcomponent.com/blog/2026/06/08/001-csharp-run-powershell-receive-objects/) |
 | [dotnet-algebraic-data-types](./dotnet-algebraic-data-types/) | [代数的データ型を.NET Framework / .NETで使う](https://comcomponent.com/blog/2026/06/09/003-dotnet-algebraic-data-types/) |
