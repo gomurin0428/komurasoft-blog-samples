@@ -66,6 +66,15 @@ public static class PacketDissector
             return layers;
         }
 
+        // 2個目以降のフラグメントのペイロードは TCP ヘッダーの続きではなく
+        // データの断片なので、TCP として解剖してはいけない
+        if (ip.IsNonInitialFragment)
+        {
+            layers.Add(OpaquePayload(offset, ip.Payload.Length,
+                $"IPv4 non-initial fragment (offset={ip.FragmentOffset})"));
+            return layers;
+        }
+
         // --- L4: TCP ---
         TcpSegment tcp = TcpSegment.Parse(ip.Payload);
         layers.Add(new LayerInfo(

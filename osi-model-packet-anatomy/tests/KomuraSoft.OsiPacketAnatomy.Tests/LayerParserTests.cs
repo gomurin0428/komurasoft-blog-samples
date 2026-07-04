@@ -64,6 +64,35 @@ public class LayerParserTests
     }
 
     [Fact]
+    public void Ipv4_FragmentFields_AreParsed()
+    {
+        byte[] frame = SampleFrameBuilder.BuildHttpGetFrame();
+        // MF=1、フラグメントオフセット=0x0010(8バイト単位) = 128バイト
+        BinaryPrimitives.WriteUInt16BigEndian(
+            frame.AsSpan(EthernetFrame.HeaderSize + 6, 2), 0x2010);
+
+        EthernetFrame ethernet = EthernetFrame.Parse(frame);
+        Ipv4Packet ip = Ipv4Packet.Parse(ethernet.Payload);
+
+        Assert.True(ip.MoreFragments);
+        Assert.Equal(128, ip.FragmentOffset);
+        Assert.True(ip.IsNonInitialFragment);
+    }
+
+    [Fact]
+    public void Ipv4_SampleFrame_IsNotFragmented()
+    {
+        byte[] frame = SampleFrameBuilder.BuildHttpGetFrame();
+        EthernetFrame ethernet = EthernetFrame.Parse(frame);
+
+        Ipv4Packet ip = Ipv4Packet.Parse(ethernet.Payload);
+
+        Assert.False(ip.MoreFragments);
+        Assert.Equal(0, ip.FragmentOffset);
+        Assert.False(ip.IsNonInitialFragment);
+    }
+
+    [Fact]
     public void Ipv6Header_IsRejected()
     {
         byte[] packet = new byte[40];
@@ -121,6 +150,9 @@ public class LayerParserTests
             // pcap のマジックナンバー(little-endian)と Ethernet リンクタイプ
             Assert.Equal(0xA1B2C3D4u, BinaryPrimitives.ReadUInt32LittleEndian(written));
             Assert.Equal(1u, BinaryPrimitives.ReadUInt32LittleEndian(written.AsSpan(20, 4)));
+
+            // thiszone / sigfigs([8..16])が確実にゼロで書かれていること
+            Assert.All(written[8..16], b => Assert.Equal(0, b));
 
             // グローバルヘッダー24 + レコードヘッダー16 + フレーム本体
             Assert.Equal(24 + 16 + frame.Length, written.Length);

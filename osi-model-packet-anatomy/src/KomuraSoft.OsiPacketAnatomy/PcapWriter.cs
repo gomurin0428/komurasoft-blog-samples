@@ -18,11 +18,13 @@ public static class PcapWriter
     {
         using var stream = File.Create(path);
 
+        // stackalloc のゼロ初期化は SkipLocalsInit 環境では保証されないため、
+        // thiszone / sigfigs([8..16])を確実に 0 にする目的で明示的にクリアする
         Span<byte> global = stackalloc byte[24];
+        global.Clear();
         BinaryPrimitives.WriteUInt32LittleEndian(global[..4], MagicNumber);
         BinaryPrimitives.WriteUInt16LittleEndian(global[4..6], VersionMajor);
         BinaryPrimitives.WriteUInt16LittleEndian(global[6..8], VersionMinor);
-        // [8..16] thiszone / sigfigs = 0
         BinaryPrimitives.WriteUInt32LittleEndian(global[16..20], SnapLength);
         BinaryPrimitives.WriteUInt32LittleEndian(global[20..24], LinkTypeEthernet);
         stream.Write(global);

@@ -80,6 +80,23 @@ public class PacketDissectorTests
     }
 
     [Fact]
+    public void NonInitialIpv4Fragment_IsNotDissectedAsTcp()
+    {
+        // フラグメントオフセット付き(2個目以降の断片)に書き換える。
+        // Protocol=6 のままでも、ペイロードは TCP ヘッダーではない。
+        byte[] frame = SampleFrameBuilder.BuildHttpGetFrame();
+        BinaryPrimitives.WriteUInt16BigEndian(
+            frame.AsSpan(EthernetFrame.HeaderSize + 6, 2), 0x2010); // MF=1, offset=16*8
+
+        IReadOnlyList<LayerInfo> layers = PacketDissector.Dissect(frame);
+
+        Assert.Equal(3, layers.Count);
+        Assert.Equal("IPv4", layers[1].ProtocolName);
+        Assert.Equal("Data", layers[2].ProtocolName);
+        Assert.Contains("fragment", layers[2].Summary);
+    }
+
+    [Fact]
     public void TruncatedFrame_ThrowsInvalidData()
     {
         byte[] tooShort = new byte[10];

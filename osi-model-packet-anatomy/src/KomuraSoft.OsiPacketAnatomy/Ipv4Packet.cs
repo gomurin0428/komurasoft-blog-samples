@@ -19,6 +19,13 @@ public sealed class Ipv4Packet
     public required int Version { get; init; }
     public required int HeaderLength { get; init; }
     public required int TotalLength { get; init; }
+
+    /// <summary>More Fragments フラグ。後続フラグメントが存在するか。</summary>
+    public required bool MoreFragments { get; init; }
+
+    /// <summary>フラグメントオフセット(バイト単位。ヘッダー上は8バイト単位で格納)。</summary>
+    public required int FragmentOffset { get; init; }
+
     public required byte TimeToLive { get; init; }
     public required byte Protocol { get; init; }
     public required ushort HeaderChecksum { get; init; }
@@ -32,6 +39,13 @@ public sealed class Ipv4Packet
     public required bool IsChecksumValid { get; init; }
 
     public bool IsTcp => Protocol == ProtocolTcp;
+
+    /// <summary>
+    /// 分割されたパケットの2個目以降のフラグメントか。
+    /// この場合、ペイロードは上位層ヘッダーの続きではなくデータの断片なので、
+    /// TCP などとして解釈してはいけない。
+    /// </summary>
+    public bool IsNonInitialFragment => FragmentOffset > 0;
 
     /// <summary>
     /// Ethernet ペイロードから IPv4 ヘッダーを読み取ります。
@@ -68,11 +82,15 @@ public sealed class Ipv4Packet
                 $"Invalid IPv4 total length: {totalLength} bytes (buffer is {raw.Length}).");
         }
 
+        ushort flagsAndOffset = BinaryPrimitives.ReadUInt16BigEndian(span[6..8]);
+
         return new Ipv4Packet
         {
             Version = version,
             HeaderLength = headerLength,
             TotalLength = totalLength,
+            MoreFragments = (flagsAndOffset & 0x2000) != 0,
+            FragmentOffset = (flagsAndOffset & 0x1FFF) * 8,
             TimeToLive = span[8],
             Protocol = span[9],
             HeaderChecksum = BinaryPrimitives.ReadUInt16BigEndian(span[10..12]),
