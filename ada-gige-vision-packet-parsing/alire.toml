@@ -1,0 +1,7 @@
+name = "gvsp"
+description = "GVSP header parsing examples for the blog article"
+version = "0.1.0"
+executables = ["gvsp_test", "overlay_demo", "byte_order_demo"]
+
+[[depends-on]]
+gnatprove = "*"
