@@ -1,0 +1,4 @@
+project Bug is
+   for Source_Dirs use ("types", "bug");
+   for Object_Dir use "obj/bug";
+end Bug;

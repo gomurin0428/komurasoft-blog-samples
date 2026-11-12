@@ -1,0 +1,7 @@
+name = "img_proof"
+description = "SPARK image processing proof examples"
+version = "0.1.0"
+executables = ["test_ops", "bench"]
+
+[[depends-on]]
+gnatprove = "*"

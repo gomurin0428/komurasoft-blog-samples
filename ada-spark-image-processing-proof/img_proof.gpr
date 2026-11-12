@@ -1,0 +1,32 @@
+project Img_Proof is
+
+   type Build_Kind is ("test", "checks", "nochecks");
+   Build : Build_Kind := external ("BUILD", "test");
+
+   type Opt_Kind is ("-O2", "-O3");
+   Opt : Opt_Kind := external ("OPT", "-O2");
+
+   for Languages use ("Ada", "C");
+   for Source_Dirs use ("types", "src", "test", "c");
+   for Object_Dir use "obj/" & Build & Opt;
+   for Exec_Dir use "bin/" & Build & Opt;
+   for Main use ("test_ops.adb", "bench.adb");
+
+   package Compiler is
+      --  Ada と同じ GCC で C もコンパイルする（clang が選ばれないようにする）
+      for Driver ("C") use "gcc";
+      for Switches ("C") use (Opt, "-Wall");
+      case Build is
+         when "test" =>
+            for Switches ("Ada") use ("-O1", "-g", "-gnata", "-gnateA", "-gnatwa");
+         when "checks" =>
+            for Switches ("Ada") use (Opt, "-gnatwa");
+         when "nochecks" =>
+            for Switches ("Ada") use (Opt, "-gnatwa");
+            --  証明できた単位だけ、実行時の検査を外す
+            for Switches ("image_ops.adb") use (Opt, "-gnatp");
+            for Switches ("labeling.adb") use (Opt, "-gnatp");
+      end case;
+   end Compiler;
+
+end Img_Proof;
