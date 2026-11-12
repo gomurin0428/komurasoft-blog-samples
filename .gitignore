@@ -11,3 +11,19 @@ obj/
 
 # Ada real-time systems: gnatchop work directory
 ada-real-time-systems/work/
+
+# Ada (Alire / gprbuild / GNATprove) build artifacts
+ada-*/alire/
+ada-*/config/
+ada-*/obj-*/
+ada-*/*.log
+ada-spark-image-processing-proof/objclang/
+ada-spark-image-processing-proof/binclang/
+ada-tasking-camera-frame-acquisition/neg-*/
+ada-gige-vision-packet-parsing/bad/obj-run-*/
+ada-inspection-dll-csharp/lib/
+ada-inspection-dll-csharp/lib-nss/
+ada-inspection-dll-csharp/out/
+
+# Julia
+topos-institute-category-theory-business-examples/.julia/

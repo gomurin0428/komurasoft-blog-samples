@@ -1,0 +1,93 @@
+name: Verify Ada machine vision samples
+
+# 「Ada とマシンビジョン」の5本の記事のサンプルを、ビルド・実行・GNATprove で確かめる。
+# 各フォルダの verify.sh（Windows は verify.ps1）が判定し、失敗すると 0 以外で終わる。
+
+on:
+  push:
+    paths:
+      - "ada-spark-image-processing-proof/**"
+      - "ada-gige-vision-packet-parsing/**"
+      - "ada-tasking-camera-frame-acquisition/**"
+      - "ada-inspection-dll-csharp/**"
+      - "ada-pixel-millimeter-types/**"
+      - ".github/workflows/verify-ada-machine-vision.yml"
+  pull_request:
+    paths:
+      - "ada-spark-image-processing-proof/**"
+      - "ada-gige-vision-packet-parsing/**"
+      - "ada-tasking-camera-frame-acquisition/**"
+      - "ada-inspection-dll-csharp/**"
+      - "ada-pixel-millimeter-types/**"
+      - ".github/workflows/verify-ada-machine-vision.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    name: linux (${{ matrix.sample }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        sample:
+          - ada-spark-image-processing-proof
+          - ada-gige-vision-packet-parsing
+          - ada-tasking-camera-frame-acquisition
+          - ada-inspection-dll-csharp
+          - ada-pixel-millimeter-types
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: alire-project/setup-alire@v6.0.0
+
+      - name: Select toolchain
+        run: |
+          alr -n toolchain --select gnat_native gprbuild
+          alr --version
+
+      - name: Set up .NET 10
+        if: matrix.sample == 'ada-inspection-dll-csharp'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Verify
+        working-directory: ${{ matrix.sample }}
+        run: ./verify.sh
+
+      - name: Upload GNATprove reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gnatprove-${{ matrix.sample }}
+          path: |
+            ${{ matrix.sample }}/**/gnatprove.out
+            ${{ matrix.sample }}/*.log
+          if-no-files-found: ignore
+
+  windows:
+    name: windows (ada-inspection-dll-csharp)
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: alire-project/setup-alire@v6.0.0
+
+      - name: Select toolchain
+        run: |
+          alr -n toolchain --select gnat_native gprbuild
+          alr --version
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Verify
+        working-directory: ada-inspection-dll-csharp
+        shell: pwsh
+        run: pwsh -NoProfile -File ./verify.ps1
