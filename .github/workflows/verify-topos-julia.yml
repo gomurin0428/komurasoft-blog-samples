@@ -1,0 +1,35 @@
+name: Verify Topos / Catlab.jl samples
+
+# 記事「圏論は業務システムで何に使えるか」の Julia の例を実行し、
+# 出力が expected/ の内容（記事に載せた出力）と一致することを確かめる。
+
+on:
+  push:
+    paths:
+      - "topos-institute-category-theory-business-examples/**"
+      - ".github/workflows/verify-topos-julia.yml"
+  pull_request:
+    paths:
+      - "topos-institute-category-theory-business-examples/**"
+      - ".github/workflows/verify-topos-julia.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  julia:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: "1.11"
+
+      - uses: julia-actions/cache@v3
+
+      - name: Verify
+        working-directory: topos-institute-category-theory-business-examples
+        run: ./verify.sh

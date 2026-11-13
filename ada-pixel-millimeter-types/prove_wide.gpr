@@ -1,0 +1,6 @@
+project Prove_Wide is
+   for Source_Dirs use ("spark-wide");
+   for Object_Dir use "obj-prove-wide";
+   for Exec_Dir use "bin";
+   for Main use ("wide_run.adb");
+end Prove_Wide;

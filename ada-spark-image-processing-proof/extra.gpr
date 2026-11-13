@@ -1,0 +1,12 @@
+--  記事の「テストで確かめたこと」のうち、test_ops 以外の試験
+--  （乱数の画像での別の方法との比較、斜めの縞の画像、重なった引数の検出）
+project Extra is
+   for Source_Dirs use ("types", "src", "extra");
+   for Object_Dir use "obj/extra";
+   for Exec_Dir use "bin/extra";
+   for Main use ("oracle.adb", "stair.adb", "alias_check.adb");
+
+   package Compiler is
+      for Switches ("Ada") use ("-O1", "-g", "-gnata", "-gnateA", "-gnatwa");
+   end Compiler;
+end Extra;

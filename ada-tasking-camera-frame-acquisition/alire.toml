@@ -1,0 +1,7 @@
+name = "frame_capture"
+description = "Frame acquisition skeleton with Ada tasks (article verification)"
+version = "0.1.0"
+executables = ["capture_main"]
+
+[[depends-on]]
+gnatprove = "*"

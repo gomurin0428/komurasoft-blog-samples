@@ -1,0 +1,19 @@
+--  拡張 ID の長さの確認を消した版を、テストのプログラムにつないで動かす。
+--  ASSERT=on（-gnata）では Read_U64 の事前条件で、ASSERT=off では添字の検査で止まるはず。
+project Bad_Run is
+   type Assert_Mode is ("on", "off");
+   Assert : Assert_Mode := external ("ASSERT", "on");
+
+   for Source_Dirs use ("src", "../src");
+   for Source_Files use ("gvsp.ads", "gvsp.adb", "gvsp_test.adb");
+   for Object_Dir use "obj-run-" & Assert;
+   for Exec_Dir use "obj-run-" & Assert;
+   for Main use ("gvsp_test.adb");
+
+   package Compiler is
+      case Assert is
+         when "on"  => for Default_Switches ("Ada") use ("-gnat2022", "-gnata");
+         when "off" => for Default_Switches ("Ada") use ("-gnat2022");
+      end case;
+   end Compiler;
+end Bad_Run;

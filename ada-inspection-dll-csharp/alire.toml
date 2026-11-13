@@ -1,0 +1,6 @@
+name = "inspect"
+description = "Inspection logic library called from C#"
+version = "0.1.0"
+
+[[depends-on]]
+gnatprove = "*"

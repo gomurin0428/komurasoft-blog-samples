@@ -1,0 +1,14 @@
+--  記事の「型で防げないもの」を確かめる例。
+--  hole_literals: 型のないリテラルの係数が、-gnatwa を付けても警告なしで通ること
+--  （-gnatwe で警告をエラーにしてビルドする）
+--  hole_px: ピクセルの長さを Accept_Rounded に渡すと、型が合わずエラーになること
+project Limits is
+   for Source_Dirs use ("src", "limits");
+   for Object_Dir use "obj-limits";
+   for Exec_Dir use "bin";
+   for Main use ("hole_literals.adb");
+   for Excluded_Source_Files use ("trunc_run.adb");
+   package Compiler is
+      for Default_Switches ("Ada") use ("-gnat2022", "-gnatwa", "-gnatwe");
+   end Compiler;
+end Limits;

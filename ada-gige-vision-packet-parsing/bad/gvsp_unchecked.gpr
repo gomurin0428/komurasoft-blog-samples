@@ -1,0 +1,5 @@
+--  拡張 ID の長さの確認を消した版。GNATprove が証明できないことを確かめる。
+project Gvsp_Unchecked is
+   for Source_Dirs use ("src");
+   for Object_Dir use "obj";
+end Gvsp_Unchecked;

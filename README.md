@@ -56,6 +56,21 @@
 | [ada-task-concurrency](./ada-task-concurrency/) | [Adaにおける安全な並行処理 ── タスクと保護オブジェクトの実践ガイド](https://comcomponent.com/blog/ada-task-concurrency/) |
 | [ada-real-time-systems](./ada-real-time-systems/) | [Adaによるリアルタイムシステムプログラミング ── 締切を守る言語機能](https://comcomponent.com/blog/ada-real-time-systems/) |
 | [ada-generic-programming](./ada-generic-programming/) | [Adaのジェネリックプログラミング ── 型安全な再利用をゼロコストで実現する仕組み](https://comcomponent.com/blog/ada-generic-programming/) |
+| [ada-spark-image-processing-proof](./ada-spark-image-processing-proof/) | [画像処理の境界外アクセスをSPARKで証明する ── 2値化・平滑化・ラベリングとCとの速度比較](https://comcomponent.com/blog/ada-spark-image-processing-proof/) |
+| [ada-gige-vision-packet-parsing](./ada-gige-vision-packet-parsing/) | [GigE VisionのパケットをAdaの型で受ける ── 表現句の落とし穴とSPARKで証明するパーサー](https://comcomponent.com/blog/ada-gige-vision-packet-parsing/) |
+| [ada-tasking-camera-frame-acquisition](./ada-tasking-camera-frame-acquisition/) | [取りこぼさない取り込み処理をAdaのタスクで作る ── 保護オブジェクトのリングバッファと優先度](https://comcomponent.com/blog/ada-tasking-camera-frame-acquisition/) |
+| [ada-inspection-dll-csharp](./ada-inspection-dll-csharp/) | [Adaの検査ロジックをC#の検査アプリから呼ぶ ── 画像バッファをコピーせずに渡し、境界で守る](https://comcomponent.com/blog/ada-inspection-dll-csharp/) |
+| [ada-pixel-millimeter-types](./ada-pixel-millimeter-types/) | [ピクセルとミリメートルを型で分ける ── Adaで寸法検査の単位の取り違えを防ぐ](https://comcomponent.com/blog/ada-pixel-millimeter-types/) |
+
+「Ada とマシンビジョン」の5本（上の表の下5行）は、GitHub Actions の [verify-ada-machine-vision](./.github/workflows/verify-ada-machine-vision.yml) でビルド・実行・GNATprove による証明を確かめています。
+
+### Julia
+
+| フォルダ | 記事 |
+| --- | --- |
+| [topos-institute-category-theory-business-examples](./topos-institute-category-theory-business-examples/) | [圏論は業務システムで何に使えるか ── Topos Instituteの公開物とCatlab.jlで試すスキーマ・データ移行・モデルの合成](https://comcomponent.com/blog/topos-institute-category-theory-business-examples/) |
+
+Julia の例は、GitHub Actions の [verify-topos-julia](./.github/workflows/verify-topos-julia.yml) で実行し、出力を記事のものと比べています。
 
 ## ライセンス
 

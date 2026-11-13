@@ -1,0 +1,7 @@
+name = "pixel_mm_types"
+description = "Examples for the article on pixel and millimeter types"
+version = "0.1.0"
+project-files = ["units.gpr"]
+
+[[depends-on]]
+gnatprove = "*"

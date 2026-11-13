@@ -1,0 +1,12 @@
+--  10進ではない固定小数点型 Scaled_Length.Mm への型変換の丸め方を確かめる例
+--  （記事では GNAT 13.3.0 で切り捨てになったと書いている）
+project Trunc is
+   for Source_Dirs use ("spark", "limits");
+   for Object_Dir use "obj-trunc";
+   for Exec_Dir use "bin";
+   for Main use ("trunc_run.adb");
+   for Excluded_Source_Files use ("hole_literals.adb", "hole_px.adb");
+   package Compiler is
+      for Default_Switches ("Ada") use ("-gnat2022");
+   end Compiler;
+end Trunc;

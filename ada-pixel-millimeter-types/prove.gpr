@@ -1,0 +1,4 @@
+project Prove is
+   for Source_Dirs use ("spark");
+   for Object_Dir use "obj-prove";
+end Prove;
